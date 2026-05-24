@@ -1,0 +1,7 @@
+{
+    "device_path": "/dev/input/event4",
+    "x_max": 3684,
+    "y_max": 2176,
+    "edge_tolerance": 150,
+    "pan_speed": 2
+}
