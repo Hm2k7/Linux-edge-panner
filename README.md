@@ -14,15 +14,15 @@ Then **reboot** (required for touchpad hardware permissions to take effect).
 
 After rebooting, an **Edge Panner** icon will be on your Desktop — just double-click it.
 
-## First Launch (Calibration)
+## Using Edge Panner
 
-The first time you double-click the icon, the calibration GUI opens automatically:
+Double-clicking the Desktop icon always opens the GUI. From there:
 
 1. Click **Start Calibration**
 2. Swipe your finger to the extreme edges and corners of your touchpad
-3. Click **Save Calibration**
-
-After that, double-clicking the icon starts the panning daemon directly — no recalibration needed.
+3. Click **Stop Recording** when done
+4. Adjust the **Pan Speed** and **Edge Zone** sliders to your liking
+5. Click **Save & Close** — the panner starts running immediately in the background
 
 ## Autostart on Boot
 
@@ -42,12 +42,14 @@ The daemon reads raw hardware events directly from the touchpad device (`/dev/in
 
 ## Tuning
 
-Edit `config.json` after calibration to adjust behaviour:
+Open the GUI at any time by double-clicking the Desktop icon. Use the sliders to adjust:
 
-| Key | Default | Description |
-|-----|---------|-------------|
-| `edge_tolerance` | `150` | How close (in raw units) to the edge triggers panning |
-| `pan_speed` | `4` | Pixels moved per tick (~5 ms) when panning |
+| Setting | Description |
+|---------|-------------|
+| **Pan Speed** | How many pixels the cursor moves per tick (1 = slow, 10 = fast) |
+| **Edge Zone** | How close to the edge your finger needs to be to trigger panning |
+
+Changes take effect the next time you click **Save & Close**.
 
 ## Requirements
 
