@@ -17,7 +17,22 @@ if [ ! -f "$SCRIPT_DIR/config.json" ]; then
     echo "No calibration found. Launching calibration GUI..."
     "$SCRIPT_DIR/venv/bin/python" "$SCRIPT_DIR/panner_gui.py"
 else
-    # Step 3: Everything is set up — run the daemon
-    echo "Calibration found. Starting Edge Panner..."
-    "$SCRIPT_DIR/venv/bin/python" "$SCRIPT_DIR/edge_daemon.py"
+    # Step 3: Config exists — show a menu
+    echo ""
+    echo "  ┌─────────────────────────────┐"
+    echo "  │        Edge Panner          │"
+    echo "  ├─────────────────────────────┤"
+    echo "  │  1. Start panning           │"
+    echo "  │  2. Open settings / recal.  │"
+    echo "  │  3. Exit                    │"
+    echo "  └─────────────────────────────┘"
+    echo ""
+    read -p "  Choose [1/2/3]: " choice
+
+    case $choice in
+        2) "$SCRIPT_DIR/venv/bin/python" "$SCRIPT_DIR/panner_gui.py" ;;
+        3) exit 0 ;;
+        *) echo "Starting Edge Panner..."
+           "$SCRIPT_DIR/venv/bin/python" "$SCRIPT_DIR/edge_daemon.py" ;;
+    esac
 fi
