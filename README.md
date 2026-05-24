@@ -30,7 +30,11 @@ To make the panner start silently every time you log in:
 
 1. Open your system's **Startup Applications** menu.
 2. Add a new **Custom Command**.
-3. The exact command is shown in the "Calibration Saved" dialog — copy and paste it directly from there.
+3. Set the command to:
+   ```
+   /home/YOUR_USERNAME/linux-edge-panner/launch.sh
+   ```
+   Replace `YOUR_USERNAME` with your actual Linux username.
 
 ## How It Works
 
