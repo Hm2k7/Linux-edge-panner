@@ -38,9 +38,24 @@ gio set "$DESKTOP_FILE" metadata::trusted true 2>/dev/null || true
 # Stamp the custom icon onto launch.sh so it shows in the file manager
 gio set "$SCRIPT_DIR/launch.sh" metadata::custom-icon "file://$SCRIPT_DIR/.assets/.icon.png" 2>/dev/null || true
 
+# Add autostart entry so the GUI opens on login automatically
+mkdir -p "$HOME/.config/autostart"
+cat > "$HOME/.config/autostart/edge-panner.desktop" << EOF
+[Desktop Entry]
+Name=Edge Panner
+Comment=Touchpad edge panning daemon
+Exec=$SCRIPT_DIR/venv/bin/python $SCRIPT_DIR/edge_daemon.py
+Terminal=false
+Type=Application
+Icon=$SCRIPT_DIR/.assets/.icon.png
+Categories=Utility;
+X-GNOME-Autostart-enabled=true
+EOF
+
 echo "======================================"
 echo " INSTALLATION COMPLETE!"
 echo "======================================"
 echo "A shortcut 'Edge Panner' has been added to your Desktop."
+echo "Edge Panner will also start automatically on every login."
 echo "IMPORTANT: Reboot your computer now for hardware permissions to take effect."
 echo "After rebooting, just double-click the Edge Panner icon on your Desktop."

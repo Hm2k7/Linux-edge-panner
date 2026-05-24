@@ -26,15 +26,7 @@ Double-clicking the Desktop icon always opens the GUI. From there:
 
 ## Autostart on Boot
 
-To make the panner start silently every time you log in:
-
-1. Open your system's **Startup Applications** menu.
-2. Add a new **Custom Command**.
-3. Set the command to:
-   ```
-   /home/YOUR_USERNAME/linux-edge-panner/launch.sh
-   ```
-   Replace `YOUR_USERNAME` with your actual Linux username.
+The installer handles this automatically. After running `install.sh`, the panner daemon will start silently in the background every time you log in — no extra steps needed.
 
 ## How It Works
 
