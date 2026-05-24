@@ -309,13 +309,6 @@ class CalibrationApp:
         subprocess.Popen([python_path, daemon_path],
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-        messagebox.showinfo("Saved & Running", (
-            "Edge Panner is now running!\n\n"
-            "To autostart on login:\n"
-            "1. Open Startup Applications\n"
-            "2. Add a Custom Command:\n"
-            f"   {python_path} {daemon_path}"
-        ))
         self.root.destroy()
 
 
