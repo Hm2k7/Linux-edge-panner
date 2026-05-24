@@ -3,6 +3,7 @@ from tkinter import messagebox
 import threading
 import json
 import os
+import subprocess
 import evdev
 
 CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
@@ -303,8 +304,13 @@ class CalibrationApp:
         script_dir  = os.path.dirname(os.path.abspath(__file__))
         python_path = os.path.join(script_dir, "venv", "bin", "python")
         daemon_path = os.path.join(script_dir, "edge_daemon.py")
-        messagebox.showinfo("Saved", (
-            "Calibration saved!\n\n"
+
+        # Launch the daemon in the background
+        subprocess.Popen([python_path, daemon_path],
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+        messagebox.showinfo("Saved & Running", (
+            "Edge Panner is now running!\n\n"
             "To autostart on login:\n"
             "1. Open Startup Applications\n"
             "2. Add a Custom Command:\n"
